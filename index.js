@@ -1,4 +1,4 @@
-var flickerCharacters = ['$', '#', 'X', '†', '@', '*', '∑']
+var flickerCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '$']
 var audio = new Audio('./hum.mp3')
 
 var minFlickerFrequency = 3000
