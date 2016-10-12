@@ -1,8 +1,13 @@
-var flickerCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '$']
+// var flickerAlphaCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+var flickerCharacters = ['Q', 'U', 'E', 'S', 'T', 'D', '3', '1', '7']
+// var flickerCharacters = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 var audio = new Audio('./hum.mp3')
 
 var minFlickerFrequency = 3000
-var maxFlickerFrequency = 10000
+var maxFlickerFrequency = 11000
+
+var minFlickerSpeed = 100
+var maxFlickerSpeed = 500
 
 function renderHeader () {
   var title = document.getElementById("title")
@@ -24,7 +29,7 @@ function initFlicker (node) {
 
 function flicker (node, originalCharacter) {
   var flickerCharacter = flickerCharacters[randomInt(0, flickerCharacters.length - 1)]
-  node.innerHTML = flickerCharacter
+  node.innerHTML = convertCharacter(originalCharacter, flickerCharacter)
   flickerColor(node)
   hum(true)
 
@@ -32,7 +37,7 @@ function flicker (node, originalCharacter) {
     node.innerHTML = originalCharacter
     flickerColor(node)
     hum(false)
-  }, 300);
+  }, randomInt(minFlickerSpeed, maxFlickerSpeed));
 }
 
 // helpers
@@ -48,6 +53,16 @@ function flickerColor (node) {
   }
 }
 
+function convertCharacter (originalCharacter, character) {
+  if (originalCharacter === '.') return '.'
+  if (originalCharacter == originalCharacter.toLowerCase()) {
+    // return character.toLowerCase()
+    return randomInt(0, 1) == 0 ? 'c' : 'o'
+  } else {
+    return character
+  }
+}
+
 function hum (play) {
   if (play) {
     audio.play()
@@ -59,4 +74,3 @@ function hum (play) {
 
 // init
 renderHeader()
-humAudio()
