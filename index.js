@@ -1,6 +1,4 @@
-// var flickerAlphaCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 var flickerCharacters = ['Q', 'U', 'E', 'S', 'T', 'D', '3', '1', '7']
-// var flickerCharacters = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 var audio = new Audio('./hum.mp3')
 
 var minFlickerFrequency = 3000
@@ -40,11 +38,6 @@ function flicker (node, originalCharacter) {
   }, randomInt(minFlickerSpeed, maxFlickerSpeed));
 }
 
-// helpers
-function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function flickerColor (node) {
   if (node.style.color !== 'white') {
     node.style.color = 'white'
@@ -56,7 +49,6 @@ function flickerColor (node) {
 function convertCharacter (originalCharacter, character) {
   if (originalCharacter === '.') return '.'
   if (originalCharacter == originalCharacter.toLowerCase()) {
-    // return character.toLowerCase()
     return randomInt(0, 1) == 0 ? 'c' : 'o'
   } else {
     return character
@@ -70,6 +62,10 @@ function hum (play) {
     audio.pause();
     audio.currentTime = 0;
   }
+}
+
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // init
