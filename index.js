@@ -1,4 +1,4 @@
-var flickerCharacters = ['$', '#', 'X', '†', '¥', 'œ', '∑']
+var flickerCharacters = ['$', '#', 'X', '†', '@', '*', '∑']
 var audio = new Audio('./hum.mp3')
 
 var minFlickerFrequency = 3000
@@ -35,7 +35,6 @@ function flicker (node, originalCharacter) {
   }, 300);
 }
 
-
 // helpers
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -48,13 +47,6 @@ function flickerColor (node) {
     node.style.color = 'red'
   }
 }
-
-// function humAudio () {
-//   var audio = new Audio('./hum.mp3')
-//   window.setInterval(() => {
-//   }, 2000);
-//   audio.play()
-// }
 
 function hum (play) {
   if (play) {
